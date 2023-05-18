@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <title>Register</title>
+</head>
+<body >
+    <div class="title_container">
+        <h1 class="Main_title">Login</h1>
+    </div>
+    <br>
+    <!-- <div class="registration_form_container">
+        <label class="reg_primary_text"> Username </label>         
+        <input class="username_box" type="text" name="User name" placeholder= "Joe" size="20"/> 
+        <br> <br>  
+
+        <label class="reg_primary_text"> Password </label>         
+        <input class="password_box" type="Password" id="password" placeholder= "Password" name="password"> 
+        <br> <br>  
+
+        
+        <button type="Login" onclick = "window.location.href='http://127.0.0.1:8000/home/';" class="login_button2" >Register</button>
+
+    </div> -->
+    
+    <div class="registration_form_container">
+      {% if incorrect == 1   %}
+        <p>incorrect credentials, try again</p>
+      {% endif %}
+      <form action="{% url 'check_user' %}" method="post">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Joe" name="user_name">
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <center>
+          
+          <button type="submit" class="btn btn-primary"  name="user">Login</button>
+        </center>
+        <br><br>
+      </form>
+      
+      <button onclick = "window.location.href='http://127.0.0.1:8000/regp/';" type="button" class="btn btn-primary">GO BACK</button>
+    </div>
+    </body>
+    </html>
